@@ -1,0 +1,26 @@
+---
+layout: post
+title:  "DB2 Tips"
+date:   2015-06-17 10:00:00
+categories: sql db2
+---
+
+
+# Table of Contents
+[Solving the Page Size issues](#ref-page-size)
+
+# Contents
+
+## <a name="ref-page-size"></a>Solving the Page Size issues
+
+### Recipes
+
+#### Increasing the page size (to 32K) for existing DB
+{% highlight sql %}
+db2 create bufferpool <buffer name> IMMEDIATE SIZE AUTOMATIC PAGESIZE 32K
+db2 create LARGE tablespace <tablespace name> PAGESIZE 32K BUFFERPOOL <buffer name> NO FILE SYSTEM CACHING
+db2 GRANT USE OF TABLESPACE <tablespace name> TO <DB user>
+{% endhighlight %}
+
+#### Creating DB with large page size (32K)
+	create db <DB Name> pagesize 32K
