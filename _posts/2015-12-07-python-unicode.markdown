@@ -15,6 +15,7 @@ The Data Type Differences
 One of the major source of confusion is due to difference of the actual data type used to represent `str` in Python 2 and 3: In Python 2, `str` is `bytes`, and Unicode string is `unicode`. In Python, `str` is Unicode, thus Unicode string is represented in, well, `str`, and there is no such built-in type named `unicode` at all. This is where many confusions arise.
 
 The following table illustrates the relationships of different data types in Python 2 and 3:
+
 | Type    | Python 2 | Python 3 | Literal    |
 |---------|----------|----------|------------|
 | Bytes   | `str`    | `bytes`  | `b'ascii'` |
@@ -32,9 +33,9 @@ How about writing a new Python program that you want to be both 2 and 3 compatib
 
 The major advantages is that it gives the same meaning of plain string literals in both Python 2 and 3, another using Unicode as the string type is safe for almost all string handlings.
 
-<a name="ref-encoding-decoding"></a>
-Encoding and Decoding
----------------------
+
+<a name="ref-encoding-decoding"></a>Encoding and Decoding
+---------------------------------------------------------
 Encoding: Convert `string` to `bytes`. (The `.encode()` function)
 Decoding: Convert `bytes` to `string`. (The `.decode()` function)
 
