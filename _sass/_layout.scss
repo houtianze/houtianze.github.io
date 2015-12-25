@@ -233,4 +233,16 @@
             font-size: 18px;
         }
     }
+    
+    table {
+        border: solid 1px;
+    }
+    
+    th {
+        border: solid 1px lightgrey;
+    }
+
+    td {
+        border: solid 1px lightgray;
+    }
 }

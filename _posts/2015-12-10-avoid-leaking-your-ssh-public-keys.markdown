@@ -21,4 +21,4 @@ Host *
 
 Reference:
 
-- [^1]: https://news.ycombinator.com/item?id=10004678
+- [^1]: [https://news.ycombinator.com/item?id=10004678](https://news.ycombinator.com/item?id=10004678)

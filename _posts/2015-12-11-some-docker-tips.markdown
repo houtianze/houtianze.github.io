@@ -20,6 +20,6 @@ After playing `Docker` for some time (including adding these [tweaks for boot2do
 
 References:
 
-[^1]: https://github.com/boot2docker/boot2docker/blob/master/README.md
-[^2]: https://github.com/boot2docker/boot2docker/issues/347
-[^3]: https://docs.docker.com/registry/insecure/
+[^1]: [https://github.com/boot2docker/boot2docker/blob/master/README.md](https://github.com/boot2docker/boot2docker/blob/master/README.md)
+[^2]: [https://github.com/boot2docker/boot2docker/issues/347](https://github.com/boot2docker/boot2docker/issues/347)
+[^3]: [https://docs.docker.com/registry/insecure/](https://docs.docker.com/registry/insecure/)
