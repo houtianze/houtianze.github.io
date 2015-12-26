@@ -81,11 +81,48 @@ So how would we tackle this problem? I think the "complete and proper" solution 
 
 - To be able to handle arbitrary path names on *nix, you then have to use `bytes` for path names, which I think will bring a lot of headaches doing string to `bytes` conversions, and the program probably won't work 100% for Unicode path names on Windows. This sounds a nuisance.   
 
-Generally, you should use Unicode
+Generally, you should use Unicode for path names.
 
-Locale Settings
----------------
-There is a bunch of other functions: `sys.getdefaultencoding()`, `locale.getdefaultlocale()`, `locale.getpreferredencoding()` I yet have to explore, and `sys.stdin` and `sys.stdout` both have their own encodings. They are not covered here (a nicer way to say I don't know) 
+Encoding / Locale related functions
+-----------------------------------
+- `sys.getdefaultencoding()`:
+
+> Return the name of the current default string encoding used by the Unicode implementation.
+
+I think this encoding refers to the default encoding used in Unicode and Bytes conversion (`encode()`, `decode()`). In Python2, the default is `ascii`, while in Python 3, the default is `utf-8`. (Surprise as usual)
+
+- `sys.getfilesystemencoding()`:
+
+> Return the name of the encoding used to convert Unicode filenames into system file names, or None if the system default encoding is used. The result value depends on the operating system:
+> 
+>   - On Mac OS X, the encoding is 'utf-8'.
+>   - On Unix, the encoding is the user’s preference according to the result of nl_langinfo(CODESET), or None if the nl_langinfo(CODESET) failed.
+>   - On Windows NT+, file names are Unicode natively, so no conversion is performed. getfilesystemencoding() still returns 'mbcs', as this is the encoding that applications should use when they explicitly want to convert Unicode strings to byte strings that are equivalent when used as file names.
+>   - On Windows 9x, the encoding is 'mbcs'.
+
+- `locale.getdefaultlocale([envvars])`:
+
+> Tries to determine the default locale settings and returns them as a tuple of the form (language code, encoding).
+> 
+> According to POSIX, a program which has not called setlocale(LC_ALL, '') runs using the portable 'C' locale. Calling setlocale(LC_ALL, '') lets it use the default locale as defined by the LANG variable. Since we do not want to interfere with the current locale setting we thus emulate the behavior in the way described above.
+> 
+> To maintain compatibility with other platforms, not only the LANG variable is tested, but a list of variables given as envvars parameter. The first found to be defined will be used. envvars defaults to the search path used in GNU gettext; it must always contain the variable name LANG. The GNU gettext search path contains 'LANGUAGE', 'LC_ALL', 'LC_CTYPE', and 'LANG', in that order.
+> 
+> Except for the code 'C', the language code corresponds to RFC 1766. language code and encoding may be None if their values cannot be determined.
+ 
+- `locale.getlocale([category])`:
+
+> Returns the current setting for the given locale category as sequence containing language code, encoding. category may be one of the LC_* values except LC_ALL. It defaults to LC_CTYPE.
+> 
+> Except for the code 'C', the language code corresponds to RFC 1766. language code and encoding may be None if their values cannot be determined.
+ 
+- `locale.getpreferredencoding([do_setlocale])`:
+
+> Return the encoding used for text data, according to user preferences. User preferences are expressed differently on different systems, and might not be available programmatically on some systems, so this function only returns a guess.
+> 
+> On some systems, it is necessary to invoke setlocale() to obtain the user preferences, so this function is not thread-safe. If invoking setlocale is not necessary or desired, do_setlocale should be set to False.
+
+Generally, you should _avoid_ calling the corresponding `set...` functions, at they have system-wide impact, which affect not only your code, but the packages you import.
 
 References
 ==========
