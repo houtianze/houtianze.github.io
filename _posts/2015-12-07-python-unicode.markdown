@@ -124,6 +124,10 @@ I think this encoding refers to the default encoding used in Unicode and Bytes c
 
 Generally, you should _avoid_ calling the corresponding `set...` functions, at they have system-wide impact, which affect not only your code, but the packages you import.
 
+Bonus point:
+
+- A 2 and 3 compitable library that may help: [https://pythonhosted.org/six/](https://pythonhosted.org/six/)
+
 References
 ==========
 - [https://docs.python.org/2/howto/unicode.html](https://docs.python.org/2/howto/unicode.html)
