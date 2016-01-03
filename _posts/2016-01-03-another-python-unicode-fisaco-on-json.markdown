@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Another Python Unicode Fisasco on JSON"
+title:  "Another Python Unicode Fiasco on JSON"
 date:   2016-01-03 00:00:00
 categories: python unicode json
 ---
