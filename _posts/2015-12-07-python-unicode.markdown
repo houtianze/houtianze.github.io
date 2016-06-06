@@ -122,7 +122,7 @@ I think this encoding refers to the default encoding used in Unicode and Bytes c
 > 
 > On some systems, it is necessary to invoke setlocale() to obtain the user preferences, so this function is not thread-safe. If invoking setlocale is not necessary or desired, do_setlocale should be set to False.
 
-Generally, you should _avoid_ calling the corresponding `set...` functions, at they have system-wide impact, which affect not only your code, but the packages you import.
+Generally, you should _avoid_ calling the corresponding `set...` functions, as they have system-wide impact, which affect not only your code, but the packages you import.
 
 Bonus point:
 
