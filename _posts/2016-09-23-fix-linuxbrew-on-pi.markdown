@@ -28,4 +28,7 @@ After some Googling, this seems to boil down to this GCC bug:
 
 At the time of writing, Raspbian (or rather its upstream, Debian jessie) ships with GCC version 4.9.2, [which is plagued with this bug](https://github.com/raspberrypi/linux/issues/1580). And Linuxbrew sets the CFLAGS and CXXFLAGS with `-march=native` (you can verify this by typing `brew --env`), which will trigger the exception. What this workaround does is to patch the related ruby code to strip this `-march=native` from the flags. Pity that [I couldn't figure out a way to do this wihtout modifying the source code](https://github.com/Linuxbrew/legacy-linuxbrew/issues/375).
 
+CAVEAT
+-----
+You _may_ need to revert back the change (`cp std.rb.orig std.rb`) before upgrading Linuxbrew and/or re-apply the patch after.
 
