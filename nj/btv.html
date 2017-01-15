@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Binary Tree Visualizer</title>
+		<script type="text/javascript">
+"use strict";
+function str2arr (s) {
+	if (s.charAt(0) == '[' && s.length >= 2) {
+		s = s.substring(1, s.length - 1);
+	}
+	var sre = /,\s*/;
+	var sa = s.split(sre);
+	var arr = [];
+	sa.forEach(function (e, i) {
+		var ival = parseInt(e);
+		arr.push(ival);
+	});
+	return arr;
+}
+function str2bt(s) {
+	var arr = str2arr(s);
+	var root = {};
+	var i = 0;
+	for (; i < arr.length && arr[i] != NaN; i++) {
+		root.value = arr[i];
+		root.left = null;
+		root.right = null;
+		break;
+	}
+	if (root === {}) {
+		return {};
+	}
+	var currentLevel = [root];
+	var nextLevel = [];
+	var pos = 0;
+	for (var j = i + 1; j < arr.length; j++) {
+		var value = arr[j];
+		if (pos == currentLevel.length * 2) {
+			if (nextLevel.length === 0) {
+				break;
+			}
+			currentLevel = nextLevel;
+			nextLevel = [];
+			pos = 0;
+		}
+		if (!isNaN(value)) {
+			var parentIndex = Math.floor(pos / 2);
+			var parentNode = currentLevel[parentIndex];
+			var node = {};
+			node.value = value;
+			node.left = null;
+			node.rigth = null;
+			nextLevel.push(node);
+			if (pos % 2 === 0) {
+				parentNode.left = node;
+			} else {
+				parentNode.right = node;
+			}
+		}
+		pos++;
+	}
+	return root;
+}
+function drawTree() {
+	var c = document.getElementById("tree-canvas");
+	var ctx = c.getContext("2d");
+	ctx.font = "20px, Courier New";
+	ctx.moveTo(0, 0);
+	ctx.lineTo(100, 100);
+	ctx.fillText(JSON.stringify(str2bt("[1,2,3]")), 100, 100);
+	ctx.stroke();
+};
+		</script>
+    <style type="text/css">
+      canvas { border: 1px solid black; }
+    </style>
+	</head>
+	<body>
+		<form action="javascript:void(0)">
+			<input id="tree-string" type="text" placeholder="Binary Tree String" onchange="drawTree()">
+		</form>
+		<canvas id="tree-canvas" width="400" height="400" />
+	</body>
+</html>

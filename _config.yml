@@ -10,3 +10,6 @@ github_username: houtianze
 
 # Build settings
 markdown: kramdown
+
+# mine
+exlude: nj
