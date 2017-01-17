@@ -61,10 +61,27 @@ function str2bt(s) {
 	}
 	return root;
 }
-function drawTree() {
+function getDrawSpec(bt) {
+	var spec = {
+		left: 0,
+		right: 0,
+		height: 0
+	};
+	var currentLevel = [{node: bt, x: 0, y:0}];
+	var nextLevel = [{}];
+	while (currentLevel.length > 0) {
+		spec.height++;
+		e.x *= 2;
+		currentLevel.forEach(function (e, i) {
+
+		})
+	}
+	return spec;
+}
+function drawTree3  {
 	var c = document.getElementById("tree-canvas");
 	var ctx = c.getContext("2d");
-	ctx.font = "20px, Courier New";
+	ctx.font = "12px Courier New";
 	ctx.moveTo(0, 0);
 	ctx.lineTo(100, 100);
 	ctx.fillText(JSON.stringify(str2bt("[1,2,3]")), 100, 100);
