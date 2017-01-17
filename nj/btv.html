@@ -61,30 +61,83 @@ function str2bt(s) {
 	}
 	return root;
 }
-function getDrawSpec(bt) {
-	var spec = {
-		left: 0,
-		right: 0,
-		height: 0
-	};
-	var currentLevel = [{node: bt, x: 0, y:0}];
-	var nextLevel = [{}];
+function getBtHeight(bt) {
+	var height = 0;
+	var currentLevel = [bt];
 	while (currentLevel.length > 0) {
-		spec.height++;
-		e.x *= 2;
-		currentLevel.forEach(function (e, i) {
-
+		var nextLevel = [];
+		currentLevel.forEach(function(e, i) {
+			if (e.left != null) {
+				nextLevel.push(e.left);
+			}
+			if (e.right != null) {
+				nextLevel.push(e.right);
+			}
 		})
+		currentLevel = nextLevel;
+		height++;
+	}
+	return height;
+}
+function getDrawSpec(bt) {
+	var node = bt;
+	var leftMostHeight = 0;
+	while (node.left != null) {
+		node = node.left;
+		leftMostHeight++;
+	}
+	var rightMostHeight = 0;
+	while (node.right != null) {
+		node = node.right;
+		rightMostHeight++;
+	}
+	var height = getBtHeight(bt);
+	var widest = Math.pow(2, height);
+	var leftWidth = widest - widest / Math.pow(2, leftMostHeight);
+	var rightWidth = widest - widest / Math.pow(2, rightMostHeight);
+	var spec = {
+		left: leftWidth,
+		right: rightWidth,
+		height: height
 	}
 	return spec;
 }
-function drawTree3  {
+function drawTreeRecur(ctx, bt, x, y, leftMost, rightMost, heightUnit) {
+	ctx.fillText(bt.value, x, y);
+	ctx.moveTo(x, y + 5);
+	if (bt.left != null) {
+		ctx.moveTo(x, y + 5);
+		var newx = (x + leftMost) / 2;
+		var newy = y + heightUnit;
+		ctx.lineTo(newx, newy - 5);
+		drawTreeRecur(ctx, bt.left, newx, newy, leftMost, x, heightUnit);
+	}
+	ctx.moveTo(x, y + 5);
+	if (bt.right != null) {
+		var newx = (x + rightMost) / 2;
+		var newy = y + heightUnit;
+		ctx.lineTo(newx, newy - 5);
+		drawTreeRecur(ctx, bt.right, newx, newy, x, rightMost, heightUnit);
+	}
+}
+function drawTree(widthMargin, heightMargin) {
+	var ts = document.getElementById("tree-string");
+	var bt = str2bt(ts.value);
 	var c = document.getElementById("tree-canvas");
 	var ctx = c.getContext("2d");
-	ctx.font = "12px Courier New";
-	ctx.moveTo(0, 0);
-	ctx.lineTo(100, 100);
-	ctx.fillText(JSON.stringify(str2bt("[1,2,3]")), 100, 100);
+	ctx.clearRect(0, 0, c.width, c.height);
+	ctx.font = "12pt Courier New";
+	var spec = getDrawSpec(bt);
+	var width = spec.left + spec.right;
+	if (width === 0 || spec.height === 0) {
+		ctx.fillText(bt.value, c.width / 2, heightMargin);
+		return;
+	}
+	var widthUnit = (c.width - 2 * widthMargin) / width;
+	var heightUnit = (c.height - 2 * heightMargin) / spec.height;
+	var startx = widthUnit * spec.left / width;
+	var starty = heightMargin;
+	drawTreeRecur(ctx, bt, c.width / 2, heightMargin, widthMargin, c.width - widthMargin, heightUnit);
 	ctx.stroke();
 };
 		</script>
@@ -94,7 +147,7 @@ function drawTree3  {
 	</head>
 	<body>
 		<form action="javascript:void(0)">
-			<input id="tree-string" type="text" placeholder="Binary Tree String" onchange="drawTree()">
+			<input id="tree-string" type="text" placeholder="Binary Tree String" onchange="drawTree(20,20)">
 		</form>
 		<canvas id="tree-canvas" width="400" height="400" />
 	</body>
