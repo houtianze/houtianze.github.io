@@ -17,5 +17,27 @@ The setup is also quite straighfoward:
 - Run `lt --port 80 --subdomain mycooluniquedomain` (assume your http server runs on port 80)
 - Visit your site at https://mycooluniquedomain.localtunnel.me and sit back
 
-[^1]: I know [ngrok](https://ngrok.com/) does things similarly, however, to choose your own subdomain, you have to fork some dollar, otherwise a new random subdomain is generated each time your run ngrok. That, in my opinion, makes it act like DDNS with limited practibility.
+If it can be any help, here is my little script (called from `/etc/rc.local`) for auto starting `localtunnel` on boot:
+
+~~~ bash
+#!/bin/bash
+
+keepforking() {
+  local cmd="$1"
+  local slp=$2
+  if [ "x$slp" == "x" ]
+  then
+    slp=60s
+  fi
+  while true
+  do
+    eval $cmd
+    sleep $slp
+  done
+}
+
+keepforking "/sbin/runuser -u www-data -- /usr/bin/lt --subdomain yourcooluniquedomain --port 80" 5m
+~~~
+
+[^1]: I know [ngrok](https://ngrok.com/) does things similarly. However, to choose your own subdomain, you have to fork some dollar, otherwise a new random subdomain is generated each time your run ngrok. That, in my opinion, makes practibility for it to act like DDNS quite limited, thought it's quite good for testing your site before deploying.
 
