@@ -20,7 +20,9 @@ with open('data.txt', 'w') as outfile:
 
 It, however, works fine in Python 3.
 
-So in summary: To dump a JSON *correctly* on both Python 2 and 3, you need the following code (`json.dumps()` uses `'utf-8'` as the default encoding, which agrees with the `io.open()` parameter) 
+The following stroke-out statements are wrong, so just ignore them.
+
+<strike>So in summary: To dump a JSON *correctly* on both Python 2 and 3, you need the following code (`json.dumps()` uses `'utf-8'` as the default encoding, which agrees with the `io.open()` parameter) 
 {% highlight python %}
 import io, json
 with io.open('data.txt', 'w', encoding='utf-8') as f:
@@ -32,7 +34,7 @@ In Python 3, however, you can simply use the following:
 import io, json
 with io.open('data.txt', 'w', encoding='utf-8') as f:
     json.dump(data, f)
-{% endhighlight %}
+{% endhighlight %}</strike>
 
 ### References:
 
