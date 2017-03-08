@@ -39,5 +39,5 @@ keepforking() {
 keepforking "/sbin/runuser -u www-data -- /usr/bin/lt --subdomain yourcooluniquedomain --port 80" 5m
 ~~~
 
-[^1]: I know [ngrok](https://ngrok.com/) does things similarly. However, to choose your own subdomain, you have to fork some dollar, otherwise a new random subdomain is generated each time your run ngrok. That, in my opinion, makes practibility for it to act like DDNS quite limited, thought it's quite good for testing your site before deploying.
+[^1]: I know [ngrok](https://ngrok.com/) does things similarly. However, to choose your own subdomain, you have to fork some dollars, otherwise a new random subdomain is generated each time your run ngrok. That, in my opinion, makes practibility for it to act like DDNS quite limited, thought it's quite good for testing your site before deploying.
 
