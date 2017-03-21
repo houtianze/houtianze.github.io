@@ -5,7 +5,7 @@ date:   2017-03-21 00:00:00
 categories: python tensorflow mandelbrot
 ---
 
-If you tried the [TensorFlow tutorial](https://www.tensorflow.org/tutorials/mandelbrot) like me (I used OS X El Capitan, Python 36), you may find you won't be able to see the final image as shown in the tutorial. Here is the minor fix I found to make the image show correctly. (in fact, you don't even need IPython)
+If you tried the [TensorFlow tutorial](https://www.tensorflow.org/tutorials/mandelbrot) like me (I used OS X El Capitan, Python 36), you may find you won't be able to see the final image as shown in the tutorial. Here is the minor fix I found to make the image show correctly. (In fact, you don't even need IPython)
 
 Prerequisites:
 ~~~ python
