@@ -19,4 +19,4 @@ var prom = new Promise((resolve, reject) => {
 
 It will output "Immediately" immediately after the code is executed (the `executor` runs synchronously)
 
-[^1]: https://stackoverflow.com/a/29963279/404271
+[^1]: [https://stackoverflow.com/a/29963279/404271](https://stackoverflow.com/a/29963279/404271)
