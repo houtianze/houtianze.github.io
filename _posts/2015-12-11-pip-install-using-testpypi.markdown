@@ -2,7 +2,7 @@
 layout: post
 title:  "(Python) pip install using the testpypi repository"
 date:   2015-12-29 00:00:00
-categories: pytho pip
+categories: python pip
 ---
 
 After fiddling sometime with Python `pip` command parameters, trying to let it use the https://testpypi.python.org repository instead of the default `pypi` repository. I found the comnand to use is:
