@@ -1,0 +1,97 @@
+body {
+    max-width: max-content;
+    margin: auto;
+}
+
+.heading {
+    font-weight: bold;
+    /* font-weight: 600; */
+    font-size: 10vw;
+    text-align: center;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-size: 400%;
+    animation: move 30s ease infinite;
+    /* background-image: linear-gradient( 68.7deg,  rgba(29,173,235,1) 13.2%, rgba(137,149,250,1) 29.8%, rgba(229,109,212,1) 48.9%, rgba(255,68,128,1) 68.2%, rgba(255,94,0,1) 86.4% ); */
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, purple)
+}
+
+.subheading {
+    font-style: italic;
+    font-size: 4vw;
+    text-align: center;
+    color: gray;
+}
+
+h2 {
+    font-size: 5vw;
+    font-style: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+}
+
+h2:before,
+h2:after {
+    content: "";
+    flex: 1 1;
+    border-bottom: 4px solid;
+    margin: auto;
+}
+
+h2:before {
+    margin-right: 10px
+}
+
+h2:after {
+    margin-left: 10px
+}
+
+@keyframes move {
+    0%,100%{
+        background-position: 200% 0%;
+    }
+
+    50%{
+        background-position: 0% 200%;
+    }
+}
+
+main {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+figure {
+    display: inline-block;
+    width: 100%;
+    margin: 0em;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0em;
+    margin-inline-end: 0em;
+    padding-bottom: 2em;
+}
+
+figure > img {
+    max-width: 100%;
+}
+
+figcaption {
+    border: 1px solid;
+}
+
+.date {
+    font-weight: bold;
+    font-size: 2vw;
+    border: 2px solid green;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+pre {
+    display: flex;
+    justify-content: center;
+}
