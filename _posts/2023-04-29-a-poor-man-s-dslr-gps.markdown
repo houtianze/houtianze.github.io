@@ -11,7 +11,7 @@ I took photos with both my phone (of course) and a DSLR in [this vacation](/cali
 
 _Is there away to geotag a batch of photos easily and (relatively) accurately?_
 
-It turns out this is more less achievable with a result that is to my satisfaction.
+It turns out this is more or less achievable with a result that is to my satisfaction.
 
 # Solutions
 
