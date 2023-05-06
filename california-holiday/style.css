@@ -95,3 +95,13 @@ pre {
     display: flex;
     justify-content: center;
 }
+
+.info {
+    color: blue;
+    font-size: 1.5em;
+}
+
+.info:before {
+    content: "\24D8";
+    padding-right: 0.5em;
+}
