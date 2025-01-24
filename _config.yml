@@ -17,10 +17,10 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Random Bits
-email: you@guess.it
+title: /dev/urandom
+email: not@showing.it
 description: > # this means to ignore newlines until "baseurl:"
-  Rants, thoughts and findings related (or not) to software / technologies.
+  My code follows the second law of thermodynamics, it tends to disorder.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://houtianze.github.io" # the base hostname & protocol for your site
 twitter_username: ibic
