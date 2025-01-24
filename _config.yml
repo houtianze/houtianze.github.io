@@ -18,9 +18,9 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: /dev/urandom
-email: not@showing.it
+email: some@random.guy
 description: > # this means to ignore newlines until "baseurl:"
-  My code follows the second law of thermodynamics, it tends to disorder.
+  My code follows the second law of thermodynamics, it just gets messier and messier.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://houtianze.github.io" # the base hostname & protocol for your site
 twitter_username: ibic
