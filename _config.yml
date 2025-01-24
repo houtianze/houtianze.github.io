@@ -20,7 +20,7 @@
 title: /dev/urandom
 email: some@random.guy
 description: > # this means to ignore newlines until "baseurl:"
-  My code follows the second law of thermodynamics, it just gets messier and messier.
+  My code follows the second law of thermodynamics, messification is irreversible.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://houtianze.github.io" # the base hostname & protocol for your site
 twitter_username: ibic
