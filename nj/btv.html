@@ -27,7 +27,7 @@ function str2bt(s) {
 		root.right = null;
 		break;
 	}
-	if (root === {}) {
+	if (Object.keys(root).length === 0) {
 		return {};
 	}
 	var currentLevel = [root];
